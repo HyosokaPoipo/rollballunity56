@@ -1,6 +1,7 @@
 /obj
 /Library/metadata
 /Library/ShaderCache
+/Temp
 /node_modules
 /public/storage
 /public/js
