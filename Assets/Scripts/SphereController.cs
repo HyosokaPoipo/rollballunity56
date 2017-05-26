@@ -6,10 +6,22 @@ public class SphereController : MonoBehaviour {
 
 	private Rigidbody rb;
 	public float speed;
+	public GUIText score;
+	public GUIText win;
+	private int targetHit;
 
+	private void showText() {
+		score.text = "Point : "+targetHit.ToString ();
+		if (targetHit >= 13) {
+			win.text = "Congratulations...!\n You Wiiin...!";
+		}
+	}
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		targetHit = 0;
+		win.text = "";
+		showText ();
 	}
 	
 	// Update is called once per frame
@@ -34,6 +46,8 @@ public class SphereController : MonoBehaviour {
 			//After ball hit the cube, we hide the cube and destroy FlareObj
 			Destroy(FlareObj, 7);
 			obj.gameObject.SetActive (false);
+			targetHit++; //Increment by one when one cube is hit
+			showText();
 		}
 	}
 }
