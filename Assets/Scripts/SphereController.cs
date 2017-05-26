@@ -10,10 +10,26 @@ public class SphereController : MonoBehaviour {
 	public GUIText win;
 	private int targetHit;
 
+	private void firingFireworks() {
+		GameObject FireRsc = Resources.Load ("Fireworks") as GameObject;
+		GameObject FireObj1 = Instantiate (FireRsc) as GameObject;
+		GameObject FireObj2 = Instantiate (FireRsc) as GameObject;
+		GameObject FireObj3 = Instantiate (FireRsc) as GameObject;
+		GameObject FireObj4 = Instantiate (FireRsc) as GameObject;
+		GameObject FireObj5 = Instantiate (FireRsc) as GameObject;
+
+
+		FireObj1.transform.position = new Vector3((float)-13.99, 1 , (float)-13.25);
+		FireObj2.transform.position = new Vector3((float)13.01, 1, (float)-13.25);
+		FireObj3.transform.position = new Vector3((float)-13.76, 1 , (float)7.7);
+		FireObj4.transform.position = new Vector3((float)13.09, 1 , (float)13.88);
+		FireObj5.transform.position = new Vector3((float)2.01, 1 , (float)2.88);
+	}
 	private void showText() {
 		score.text = "Point : "+targetHit.ToString ();
 		if (targetHit >= 13) {
 			win.text = "Congratulations...!\n You Wiiin...!";
+			firingFireworks ();
 		}
 	}
 	// Use this for initialization
@@ -44,7 +60,7 @@ public class SphereController : MonoBehaviour {
 			FlareObj.transform.position = transform.position;
 
 			//After ball hit the cube, we hide the cube and destroy FlareObj
-			Destroy(FlareObj, 7);
+			Destroy(FlareObj, 13);
 			obj.gameObject.SetActive (false);
 			targetHit++; //Increment by one when one cube is hit
 			showText();
