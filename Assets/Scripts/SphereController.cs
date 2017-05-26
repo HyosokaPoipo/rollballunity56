@@ -24,4 +24,16 @@ public class SphereController : MonoBehaviour {
 		Vector3 v3 = new Vector3 (horizontalValue, 0.0f, verticalValue);
 		rb.AddForce (v3 * speed * Time.deltaTime);
 	}
+
+	void OnTriggerEnter(Collider obj) {		
+		if (obj.gameObject.tag == "hisoka_target") {
+			GameObject FlareRsc = Resources.Load ("Flare") as GameObject;
+			GameObject FlareObj = Instantiate (FlareRsc) as GameObject;
+			FlareObj.transform.position = transform.position;
+
+			//After ball hit the cube, we hide the cube and destroy FlareObj
+			Destroy(FlareObj, 7);
+			obj.gameObject.SetActive (false);
+		}
+	}
 }
