@@ -19,11 +19,11 @@ public class SphereController : MonoBehaviour {
 		GameObject FireObj5 = Instantiate (FireRsc) as GameObject;
 
 
-		FireObj1.transform.position = new Vector3((float)-13.99, 1 , (float)-13.25);
-		FireObj2.transform.position = new Vector3((float)13.01, 1, (float)-13.25);
-		FireObj3.transform.position = new Vector3((float)-13.76, 1 , (float)7.7);
-		FireObj4.transform.position = new Vector3((float)13.09, 1 , (float)13.88);
-		FireObj5.transform.position = new Vector3((float)2.01, 1 , (float)2.88);
+		FireObj1.transform.position = new Vector3(-13.99f, 1 , -13.25f);
+		FireObj2.transform.position = new Vector3(13.01f, 1, -13.25f);
+		FireObj3.transform.position = new Vector3(-13.76f, 1 , 7.7f);
+		FireObj4.transform.position = new Vector3(13.09f, 1 , 13.88f);
+		FireObj5.transform.position = new Vector3(2.01f, 1 , 2.88f);
 	}
 	private void showText() {
 		score.text = "Point : "+targetHit.ToString ();
