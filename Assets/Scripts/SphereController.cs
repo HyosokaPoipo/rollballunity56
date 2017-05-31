@@ -9,6 +9,7 @@ public class SphereController : MonoBehaviour {
 	public GUIText score;
 	public GUIText win;
 	private int targetHit;
+	private AudioSource sound;
 
 	private void firingFireworks() {
 		GameObject FireRsc = Resources.Load ("Fireworks") as GameObject;
@@ -30,6 +31,7 @@ public class SphereController : MonoBehaviour {
 		if (targetHit >= 13) {
 			win.text = "Congratulations...!\n You Wiiin...!";
 			firingFireworks ();
+			sound.Play ();
 		}
 	}
 	// Use this for initialization
@@ -38,6 +40,7 @@ public class SphereController : MonoBehaviour {
 		targetHit = 0;
 		win.text = "";
 		showText ();
+		sound = GameObject.Find("WinnerFireworkVoice").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
