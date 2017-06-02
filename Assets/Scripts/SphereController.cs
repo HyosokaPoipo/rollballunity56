@@ -50,9 +50,9 @@ public class SphereController : MonoBehaviour {
 		buttons = menu.GetComponentsInChildren<Button> ();
 		// buttons[0] is restart button
 		buttons[0].onClick.AddListener(restartListener);
-		buttons [1].onClick.AddListener (exitListener);
-		// buttons[1] is exit button
 
+		// buttons[1] is exit button
+		buttons [1].onClick.AddListener (exitListener);
 	}
 
 	void restartListener() {
