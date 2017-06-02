@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class SphereController : MonoBehaviour {
 
 	private Rigidbody rb;
@@ -11,6 +12,7 @@ public class SphereController : MonoBehaviour {
 	private int targetHit;
 	private AudioSource sound;
 	private Canvas menu;
+	private Button[] buttons;
 
 	private void firingFireworks() {
 		GameObject FireRsc = Resources.Load ("Fireworks") as GameObject;
@@ -44,8 +46,23 @@ public class SphereController : MonoBehaviour {
 		sound = GameObject.Find("WinnerFireworkVoice").GetComponent<AudioSource>();
 		menu = GameObject.Find ("WinMenu").GetComponent<Canvas> ();
 		menu.gameObject.SetActive (false);
+
+		buttons = menu.GetComponentsInChildren<Button> ();
+		// buttons[0] is restart button
+		buttons[0].onClick.AddListener(restartListener);
+		buttons [1].onClick.AddListener (exitListener);
+		// buttons[1] is exit button
+
 	}
-	
+
+	void restartListener() {
+		SceneManager.LoadScene ("roll_ball_hisoka");
+	}
+
+	void exitListener() {
+		Application.Quit ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
