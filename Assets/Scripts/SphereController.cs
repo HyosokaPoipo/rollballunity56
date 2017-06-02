@@ -10,6 +10,7 @@ public class SphereController : MonoBehaviour {
 	public GUIText win;
 	private int targetHit;
 	private AudioSource sound;
+	private Canvas menu;
 
 	private void firingFireworks() {
 		GameObject FireRsc = Resources.Load ("Fireworks") as GameObject;
@@ -41,6 +42,8 @@ public class SphereController : MonoBehaviour {
 		win.text = "";
 		showText ();
 		sound = GameObject.Find("WinnerFireworkVoice").GetComponent<AudioSource>();
+		menu = GameObject.Find ("WinMenu").GetComponent<Canvas> ();
+		menu.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -67,6 +70,9 @@ public class SphereController : MonoBehaviour {
 			obj.gameObject.SetActive (false);
 			targetHit++; //Increment by one when one cube is hit
 			showText();
+			if (targetHit >= 13) {
+				menu.gameObject.SetActive (true);
+			}
 		}
 	}
 }
